@@ -34,11 +34,13 @@
         app:layout_constraintTop_toTopOf="@+id/diceImage"
         app:layout_constraintVertical_bias="0.494" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/rollButton"
         android:layout_width="133dp"
         android:layout_height="84dp"
         android:text="Rolar"
+        android:textColor="@color/white"
+        android:background="@drawable/background_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
