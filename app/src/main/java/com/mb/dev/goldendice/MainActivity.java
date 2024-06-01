@@ -65,23 +65,23 @@ public class MainActivity extends AppCompatActivity {
         int diceSides;
         switch (selectedOption) {
             case "D4":
-                activityClass = D20.class;
+                activityClass = D4.class;
                 diceSides = 4;
                 break;
             case "D6":
-                activityClass = D20.class;
+                activityClass = D6.class;
                 diceSides = 6;
                 break;
             case "D8":
-                activityClass = D20.class;
+                activityClass = D8.class;
                 diceSides = 8;
                 break;
             case "D10":
-                activityClass = D20.class;
+                activityClass = D10.class;
                 diceSides = 10;
                 break;
             case "D12":
-                activityClass = D20.class;
+                activityClass = D12.class;
                 diceSides = 12;
                 break;
             case "D20":
@@ -89,11 +89,11 @@ public class MainActivity extends AppCompatActivity {
                 diceSides = 20;
                 break;
             case "D100":
-                activityClass = D20.class;
+                activityClass = D100.class;
                 diceSides = 100;
                 break;
             case "D%":
-                activityClass = D20.class;
+                activityClass = DPO.class;
                 diceSides = 100;
                 break;
             default:

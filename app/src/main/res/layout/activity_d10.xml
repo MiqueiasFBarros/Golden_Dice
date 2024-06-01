@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".D20">
+    tools:context=".D10">
 
 
     <ImageView
         android:id="@+id/diceImage"
-        android:layout_width="285dp"
-        android:layout_height="337dp"
-        android:src="@drawable/d20"
+        android:layout_width="250dp"
+        android:layout_height="291dp"
+        android:src="@drawable/d10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317"
+        app:layout_constraintVertical_bias="0.286"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/resultText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="51dp"
+        android:layout_height="94dp"
         android:gravity="center"
         android:text="0"
         android:textColor="#000000"
@@ -30,10 +31,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/diceImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.510"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/diceImage"
-        app:layout_constraintVertical_bias="0.498"
+        app:layout_constraintVertical_bias="0.355"
         tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatButton
