@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageButton
+        android:id="@+id/openMenu"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="111dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="111dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="188dp"
+        android:layout_height="103dp"
         android:layout_above="@+id/openD20DButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="155dp"
+        android:layout_marginBottom="48dp"
         android:minHeight="48dp" />
 
     <Button
@@ -22,8 +35,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="275dp"
+        android:layout_marginEnd="147dp"
+        android:layout_marginBottom="134dp"
         android:text="Abrir Dado" />
 
 </RelativeLayout>

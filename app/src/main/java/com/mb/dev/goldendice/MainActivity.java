@@ -1,11 +1,16 @@
 package com.mb.dev.goldendice;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +20,28 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private String selectedOption;
+    private ImageButton openMenu;
+    private SharedPreferences sharedPreferences;
+    private String encodedImage;
+    private ImageHandler imageHandler;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        openMenu = findViewById(R.id.openMenu);
         Spinner spinnerMain = findViewById(R.id.spinner);
+
+        sharedPreferences = getSharedPreferences("MuPreferences", MODE_PRIVATE);
+        encodedImage = sharedPreferences.getString("profileImage", null);
+
+        if (encodedImage != null) {
+            byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            openMenu.setImageBitmap(decodedByte);
+        }
+
+        imageHandler = new ImageHandler(this, openMenu, sharedPreferences);
 
         // Lista de opções de dados
         List<String> options = new ArrayList<>();
@@ -58,6 +79,23 @@ public class MainActivity extends AppCompatActivity {
                 openActivity(selectedOption);
             }
         });
+
+        openMenu.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, Menu.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Bitmap image = imageHandler.loadImage();
+        if (image != null) {
+            openMenu.setImageBitmap(image);
+        }
     }
 
     private void openActivity(String selectedOption) {
@@ -103,4 +141,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("selected_option", selectedOption); // Passar a opção selecionada para a próxima atividade
         intent.putExtra("dice_sides", diceSides); // Passar o número de lados do dado para a próxima atividade
         startActivity(intent);
-    }}
+    }
+}
