@@ -1,5 +1,7 @@
 # Golden Dice
 
+![Logo GoldenDice](https://github.com/MiqueiasFBarros/Golden_Dice/blob/master/app/src/main/res/drawable/titulo.png)
+
 ## Descrição
 
 Este aplicativo será uma ferramenta essencial para jogadores de RPG, oferecendo uma solução moderna e prática para a rolagem de dados. Ele otimiza o tempo de jogo e melhora a experiência geral das sessões de RPG, proporcionando funcionalidades que facilitam a jogabilidade e o acompanhamento do progresso do jogo.
