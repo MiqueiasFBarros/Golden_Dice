@@ -11,42 +11,59 @@
         android:layout_width="225dp"
         android:layout_height="225dp"
         android:layout_above="@+id/spinner"
+        android:layout_below="@+id/imageView"
         android:layout_alignStart="@+id/spinner"
         android:layout_alignEnd="@+id/spinner"
-        android:layout_marginStart="-22dp"
-        android:layout_marginEnd="-22dp"
+        android:layout_marginStart="-18dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="-17dp"
         android:layout_marginBottom="33dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounded_corners"
+        app:layout_constraintEnd_toEndOf="@id/spinner"
+        app:layout_constraintStart_toStartOf="@id/spinner"
         tools:layout_editor_absoluteY="111dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="188dp"
-        android:layout_height="103dp"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="111dp"
         android:layout_marginEnd="110dp"
-        android:layout_marginBottom="268dp"
-        android:minHeight="48dp" />
+        android:layout_marginBottom="207dp"
+        android:background="@drawable/dices"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="#00000000" />
 
     <ImageButton
         android:id="@+id/openD20DButton"
-        android:layout_width="177dp"
-        android:layout_height="116dp"
+        android:layout_width="wrap_content"
+        android:layout_height="104dp"
+        android:layout_below="@+id/openMenu"
         android:layout_alignStart="@+id/spinner"
         android:layout_alignEnd="@+id/spinner"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="95dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:src="@drawable/opendiceimage"
         android:text="Abrir Dado" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="152dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="82dp"
+        app:srcCompat="@drawable/titulo" />
 
 </RelativeLayout>

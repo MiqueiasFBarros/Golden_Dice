@@ -1,7 +1,5 @@
 package com.mb.dev.goldendice;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -9,17 +7,24 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import java.util.List;
 
 public class Menu extends AppCompatActivity {
 
     private static final int REQUEST_CODE_CROP_IMAGE = 1234;
 
     private ImageHandler imageHandler;
+    private DatabaseHelper db;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
@@ -41,10 +46,38 @@ public class Menu extends AppCompatActivity {
                 imageHandler.selectImage();
             }
         });
+
+        db = new DatabaseHelper(this);
+        updateResults();
     }
 
+    public void rollDice() {
+        int result = 6;
+        db.addResult(result, "D6");
+        updateResults();
+    }
+
+        private void updateResults() {
+            List<Result> results = db.getAllResults();
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    TextView resultsTextView = findViewById(R.id.resultsTextView);
+                    if (results != null) {
+                        StringBuilder resultsString = new StringBuilder();
+                        for (Result result : results) {
+                            resultsString.append(result.toString()).append("\n");
+                        }
+                        resultsTextView.setText(resultsString.toString());
+                    }
+                }
+            });
+        }
+
+
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         Bitmap image = imageHandler.loadImage();
         if (image != null) {
@@ -54,7 +87,7 @@ public class Menu extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {

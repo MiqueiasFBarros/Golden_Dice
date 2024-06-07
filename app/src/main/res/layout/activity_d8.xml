@@ -26,7 +26,7 @@
         android:layout_height="111dp"
         android:gravity="center"
         android:text="0"
-        android:textColor="#000000"
+        android:textColor="#dcbb05"
         android:textSize="96sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/diceImage"
@@ -42,8 +42,8 @@
         android:layout_width="133dp"
         android:layout_height="84dp"
         android:text="Rolar"
-        android:textColor="@color/white"
-        android:background="@drawable/background_button"
+        android:background="@drawable/send"
+        android:textColor="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,15 +52,17 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="63dp"
+        android:layout_height="74dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/pa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@android:drawable/ic_menu_revert"
         tools:ignore="ContentDescription"/>
 
 

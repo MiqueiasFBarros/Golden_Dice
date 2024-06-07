@@ -1,5 +1,6 @@
 package com.mb.dev.goldendice;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,7 +52,18 @@ public abstract class BaseDiceActivity extends AppCompatActivity {
         int randomNumber = random.nextInt(diceSides) + 1;
         resultText.setText(String.valueOf(randomNumber));
 
+        new SaveResultTask().execute(randomNumber);
+
         resultText.setVisibility(View.VISIBLE);
+    }
+
+    private class SaveResultTask extends AsyncTask<Integer, Void, Void> {
+        @Override
+        protected Void doInBackground(Integer... results) {
+            DatabaseHelper db = new DatabaseHelper(BaseDiceActivity.this);
+            db.addResult(results[0], "D" + diceSides);
+            return null;
+        }
     }
 
     protected abstract int getLayoutId();
