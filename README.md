@@ -40,5 +40,9 @@ Este projeto foi desenvolvido para apresentação como trabalho na Faculdade Cen
 
 
 ---
+## Licença
+
+Este projeto está licenciado sob os termos da licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+---
 
 Espero que este aplicativo melhore suas sessões de RPG, tornando-as mais fluidas e divertidas. Agradeço seu interesse e espero seu feedback para tornar o aplicativo ainda melhor!
