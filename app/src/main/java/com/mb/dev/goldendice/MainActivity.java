@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         imageHandler = new ImageHandler(this, openMenu, sharedPreferences);
 
-        // Lista de opções de dados
         List<String> options = new ArrayList<>();
         options.add("D4");
         options.add("D6");
@@ -54,11 +53,9 @@ public class MainActivity extends AppCompatActivity {
         options.add("D100");
         options.add("D%");
 
-        // Adaptador para o Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Definir adaptador e ouvinte de seleção para o Spinner
         spinnerMain.setAdapter(adapter);
         spinnerMain.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -68,11 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // Implemente este método se necessário
             }
         });
 
-        Button openD20DButton = findViewById(R.id.openD20DButton);
+        ImageButton openD20DButton = findViewById(R.id.openD20DButton);
         openD20DButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
                 throw new IllegalArgumentException("Invalid option selected");
         }
         Intent intent = new Intent(MainActivity.this, activityClass);
-        intent.putExtra("selected_option", selectedOption); // Passar a opção selecionada para a próxima atividade
-        intent.putExtra("dice_sides", diceSides); // Passar o número de lados do dado para a próxima atividade
+        intent.putExtra("selected_option", selectedOption);
+        intent.putExtra("dice_sides", diceSides);
         startActivity(intent);
     }
 }

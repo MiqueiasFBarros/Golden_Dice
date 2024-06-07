@@ -1,7 +1,6 @@
 package com.mb.dev.goldendice;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -10,6 +9,8 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.widget.ImageButton;
+
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -41,23 +42,33 @@ public class ImageHandler {
         return null;
     }
 
+    public void loadImage(Uri uri) {
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), uri);
+            photoButton.setImageBitmap(bitmap);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] imageBytes = baos.toByteArray();
+            String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+            sharedPreferences.edit().putString("profileImage", encodedImage).apply();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void handleActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             Uri selectedImage = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), selectedImage);
-                photoButton.setImageBitmap(bitmap);
 
-                // Salvar a imagem nas preferências compartilhadas
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] imageBytes = baos.toByteArray();
-                String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-                sharedPreferences.edit().putString("profileImage", encodedImage).apply();
+            int pixels = (int) (250 * activity.getResources().getDisplayMetrics().density);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            CropImage.activity(selectedImage)
+                    .setMinCropResultSize(pixels, pixels)
+                    .setMaxCropResultSize(pixels, pixels)
+                    .start(activity);
         }
     }
+
 }
